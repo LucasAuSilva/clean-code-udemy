@@ -5,4 +5,4 @@ export * from './db/update-access-token-repository'
 
 export * from './criptography/hasher'
 export * from './criptography/hash-comparer'
-export * from './criptography/token-generator'
+export * from './criptography/encrypter'
