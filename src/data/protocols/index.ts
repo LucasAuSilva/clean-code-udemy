@@ -4,3 +4,4 @@ export * from './db/log-error-repository'
 
 export * from './criptography/encrypter'
 export * from './criptography/hash-comparer'
+export * from './criptography/token-generator'
