@@ -3,6 +3,6 @@ export * from './db/load-account-by-email-repository'
 export * from './db/log-error-repository'
 export * from './db/update-access-token-repository'
 
-export * from './criptography/encrypter'
+export * from './criptography/hasher'
 export * from './criptography/hash-comparer'
 export * from './criptography/token-generator'
