@@ -11,4 +11,4 @@ RUN npm install --only=prod \
 COPY ./src ./src
 RUN npm run build
 
-ENTRYPOINT npm run start
+ENTRYPOINT npm start
