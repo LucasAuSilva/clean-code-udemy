@@ -4,8 +4,11 @@ WORKDIR /app/clean-code-udemy
 EXPOSE 5050
 
 COPY ./package.json .
-COPY ./dist ./dist
+COPY ./tsconfig.json .
+RUN npm install --only=prod \
+  && npm install typescript -g
 
-RUN npm install --only=prod
+COPY ./src ./src
+RUN npm run build
 
 ENTRYPOINT npm run start
