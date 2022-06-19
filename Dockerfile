@@ -1,12 +1,11 @@
+ARG EnvironmentVariable
 FROM node:16.14
 WORKDIR /app/clean-code-udemy
-EXPOSE 5000
+EXPOSE 5050
 
 COPY ./package.json .
-COPY ./tsconfig.json .
-COPY ./src .
+COPY ./dist ./dist
 
 RUN npm install --only=prod
-RUN npm run build
 
 ENTRYPOINT npm run start

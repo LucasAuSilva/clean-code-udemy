@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/main/server.js",
-    "build": "dist && tsc",
+    "build": "tsc",
     "dev": "sucrase-node src/main/server.ts",
     "test": "jest --passWithNoTests --silent --runInBand --no-cache",
     "test:verbose": "jest --passWithNoTests --runInBand",
