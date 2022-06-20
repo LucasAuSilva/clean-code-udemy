@@ -5,10 +5,10 @@ EXPOSE 5050
 
 COPY ./package.json .
 COPY ./tsconfig.json .
+COPY ./src ./src
+
 RUN npm install --only=prod \
   && npm install typescript -g
-
-COPY ./src ./src
 RUN npm run build
 
 ENTRYPOINT npm start
