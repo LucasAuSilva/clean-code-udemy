@@ -5,7 +5,8 @@ import {
   Validation,
   badRequest,
   AddSurvey,
-  serverError
+  serverError,
+  noContent
 } from './add-survey-controller-protocols'
 
 export class AddSurveyController implements Controller {
@@ -25,7 +26,7 @@ export class AddSurveyController implements Controller {
         question,
         answers
       })
-      return Promise.resolve(null)
+      return noContent()
     } catch (error) {
       return serverError(error)
     }
