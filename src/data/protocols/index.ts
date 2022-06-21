@@ -1,5 +1,6 @@
 export * from './db/account/add-account-repository'
 export * from './db/account/load-account-by-email-repository'
+export * from './db/account/load-account-by-token-repository'
 export * from './db/log/log-error-repository'
 export * from './db/log/update-access-token-repository'
 
