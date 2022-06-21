@@ -32,33 +32,33 @@ describe('Login Routes', () => {
         })
         .expect(200)
     })
+  })
 
-    describe('POST /login', () => {
-      test('Should return 200 on login', async () => {
-        const password = await hash('123', 12)
-        await accountCollection.insertOne({
-          name: 'Lucas',
+  describe('POST /login', () => {
+    test('Should return 200 on login', async () => {
+      const password = await hash('123', 12)
+      await accountCollection.insertOne({
+        name: 'Lucas',
+        email: 'lucassilva@email.com',
+        password
+      })
+      await request(app)
+        .post('/api/login')
+        .send({
           email: 'lucassilva@email.com',
-          password
+          password: '123'
         })
-        await request(app)
-          .post('/api/login')
-          .send({
-            email: 'lucassilva@email.com',
-            password: '123'
-          })
-          .expect(200)
-      })
+        .expect(200)
+    })
 
-      test('Should return 401 on login', async () => {
-        await request(app)
-          .post('/api/login')
-          .send({
-            email: 'lucassilva@email.com',
-            password: '123'
-          })
-          .expect(401)
-      })
+    test('Should return 401 on login', async () => {
+      await request(app)
+        .post('/api/login')
+        .send({
+          email: 'lucassilva@email.com',
+          password: '123'
+        })
+        .expect(401)
     })
   })
 })

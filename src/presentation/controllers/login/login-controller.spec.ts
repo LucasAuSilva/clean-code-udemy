@@ -4,12 +4,12 @@ import { Validation, HttpRequest, Authentication, AuthenticationModel } from './
 import { LoginController } from './login-controller'
 
 const makeAuthentication = (): Authentication => {
-  class AutheticationStub implements Authentication {
+  class AuthenticationStub implements Authentication {
     async auth (_authentication: AuthenticationModel): Promise<string> {
       return Promise.resolve('any_token')
     }
   }
-  return new AutheticationStub()
+  return new AuthenticationStub()
 }
 
 const makeValidation = (): Validation => {
