@@ -1,10 +1,16 @@
+import {
+  AddAccountRepository,
+  LoadAccountByEmailRepository,
+  LoadAccountByTokenRepository,
+  UpdateAccessTokenRepository
+} from '../../../../data/protocols'
 import { ObjectId } from 'mongodb'
-import { AddAccountRepository, LoadAccountByEmailRepository, UpdateAccessTokenRepository } from '../../../../data/protocols'
 import { AccountModel } from '../../../../domain/models/account'
 import { AddAccountModel } from '../../../../domain/usecases/add-account'
 import { MongoHelper } from '../helpers/mongo-helper'
 
-export class AccountMongoRepository implements AddAccountRepository, LoadAccountByEmailRepository, UpdateAccessTokenRepository {
+export class AccountMongoRepository implements AddAccountRepository,
+LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRepository {
   async add (account: AddAccountModel): Promise<AccountModel> {
     const accountCollection = await MongoHelper.getCollection('accounts')
     const result = await accountCollection.insertOne(account)
@@ -14,8 +20,7 @@ export class AccountMongoRepository implements AddAccountRepository, LoadAccount
       projection: {
         _id: 1,
         name: 1,
-        email: 1,
-        password: 1
+        email: 1
       }
     })
     return MongoHelper.map<AccountModel>(newAccount)
@@ -29,8 +34,22 @@ export class AccountMongoRepository implements AddAccountRepository, LoadAccount
       projection: {
         _id: 1,
         name: 1,
-        email: 1,
-        password: 1
+        email: 1
+      }
+    })
+    return account && MongoHelper.map<AccountModel>(account)
+  }
+
+  async loadByToken (accessToken: string, role?: string): Promise<AccountModel> {
+    const accountCollection = await MongoHelper.getCollection('accounts')
+    const account = await accountCollection.findOne({
+      accessToken,
+      role
+    }, {
+      projection: {
+        _id: 1,
+        name: 1,
+        email: 1
       }
     })
     return account && MongoHelper.map<AccountModel>(account)
