@@ -34,7 +34,8 @@ LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRep
       projection: {
         _id: 1,
         name: 1,
-        email: 1
+        email: 1,
+        password: 1
       }
     })
     return account && MongoHelper.map<AccountModel>(account)

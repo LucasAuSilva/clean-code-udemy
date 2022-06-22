@@ -50,6 +50,7 @@ describe('Account Mongo Repository', () => {
       expect(account.id).toBeTruthy()
       expect(account.name).toBe('any_name')
       expect(account.email).toBe('any_email@email.com')
+      expect(account.password).toBe('hash_password')
     })
 
     test('Should return null if loadByEmail fails', async () => {
