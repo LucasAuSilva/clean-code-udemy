@@ -44,7 +44,11 @@ LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRep
     const accountCollection = await MongoHelper.getCollection('accounts')
     const account = await accountCollection.findOne({
       accessToken,
-      role
+      $or: [{
+        role
+      }, {
+        role: 'admin'
+      }]
     }, {
       projection: {
         _id: 1,
