@@ -34,7 +34,6 @@ describe('Account Mongo Repository', () => {
       expect(account.id).toBeTruthy()
       expect(account.name).toBe('any_name')
       expect(account.email).toBe('any_email@email.com')
-      expect(account.password).toBe('hash_password')
     })
   })
 
@@ -51,7 +50,6 @@ describe('Account Mongo Repository', () => {
       expect(account.id).toBeTruthy()
       expect(account.name).toBe('any_name')
       expect(account.email).toBe('any_email@email.com')
-      expect(account.password).toBe('hash_password')
     })
 
     test('Should return null if loadByEmail fails', async () => {
@@ -75,8 +73,7 @@ describe('Account Mongo Repository', () => {
         projection: {
           _id: 1,
           name: 1,
-          email: 1,
-          password: 1
+          email: 1
         }
       })
       expect(account.accessToken).toBeFalsy()
@@ -91,6 +88,22 @@ describe('Account Mongo Repository', () => {
       })
       expect(account).toBeTruthy()
       expect(account.accessToken).toBe('any_token')
+    })
+  })
+  describe('loadByToken()', () => {
+    test('Should return an account on loadByToken success', async () => {
+      const sut = makeSut()
+      await accountCollection.insertOne({
+        name: 'any_name',
+        email: 'any_email@email.com',
+        password: 'hash_password',
+        accessToken: 'any_token'
+      })
+      const account = await sut.loadByToken('any_token')
+      expect(account).toBeTruthy()
+      expect(account.id).toBeTruthy()
+      expect(account.name).toBe('any_name')
+      expect(account.email).toBe('any_email@email.com')
     })
   })
 })
