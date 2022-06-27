@@ -44,7 +44,7 @@ const makeFakeError = (): HttpResponse => {
   return serverError(fakeError)
 }
 
-interface SutTypes {
+type SutTypes = {
   controllerStub: Controller
   sut: LogControllerDecorator
   logErrorRepositoryStub: LogErrorRepository
