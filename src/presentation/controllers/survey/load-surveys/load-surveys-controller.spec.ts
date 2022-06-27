@@ -1,4 +1,10 @@
-import { SurveyModel, LoadSurveys, ok, serverError, noContent } from './load-survey-controller-protocols'
+import {
+  LoadSurveys,
+  SurveyModel,
+  ok,
+  noContent,
+  serverError
+} from './load-survey-controller-protocols'
 import { LoadSurveysController } from './load-surveys-controller'
 import MockDate from 'mockdate'
 

@@ -1,7 +1,7 @@
-import { ok, serverError } from '../../presentation/helpers/http/http-helper'
-import { LogErrorRepository } from '../../data/protocols'
-import { AccountModel } from '../../domain/models/account'
-import { Controller, HttpRequest, HttpResponse } from '../../presentation/protocols'
+import { Controller, HttpRequest, HttpResponse } from '@/presentation/protocols'
+import { ok, serverError } from '@/presentation/helpers/http/http-helper'
+import { AccountModel } from '@/domain/models/account'
+import { LogErrorRepository } from '@/data/protocols'
 import { LogControllerDecorator } from './log-controller-decorator'
 
 const makeController = (): Controller => {
@@ -15,7 +15,7 @@ const makeController = (): Controller => {
 
 const makeLogErrorRepository = (): LogErrorRepository => {
   class LogErrorRepositoryStub implements LogErrorRepository {
-    async logError (stack: string): Promise<void> {
+    async logError (_stack: string): Promise<void> {
       return Promise.resolve()
     }
   }

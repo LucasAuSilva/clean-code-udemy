@@ -1,7 +1,7 @@
 import {
   LoadSurveys,
-  LoadSurveysRepository,
-  SurveyModel
+  SurveyModel,
+  LoadSurveysRepository
 } from './db-load-surveys-protocols'
 
 export class DbLoadSurveys implements LoadSurveys {

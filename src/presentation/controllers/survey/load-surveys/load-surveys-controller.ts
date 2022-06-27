@@ -1,11 +1,11 @@
 import {
+  Controller,
   HttpRequest,
   HttpResponse,
-  Controller,
   LoadSurveys,
   ok,
-  serverError,
-  noContent
+  noContent,
+  serverError
 } from './load-survey-controller-protocols'
 
 export class LoadSurveysController implements Controller {

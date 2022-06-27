@@ -1,7 +1,7 @@
 import {
+  Middleware,
   HttpRequest,
   HttpResponse,
-  Middleware,
   LoadAccountByToken,
   ok,
   forbidden,
