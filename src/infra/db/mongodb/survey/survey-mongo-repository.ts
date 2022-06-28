@@ -17,9 +17,8 @@ LoadSurveyById {
 
   async loadAll (): Promise<SurveyModel[]> {
     const surveyCollection = await MongoHelper.getCollection('surveys')
-    return (await surveyCollection.find().toArray()).map(survey => {
-      return MongoHelper.map<SurveyModel>(survey)
-    })
+    const surveys = await surveyCollection.find().toArray()
+    return MongoHelper.mapCollection<SurveyModel>(surveys)
   }
 
   async loadById (id: string): Promise<SurveyModel> {
@@ -34,6 +33,6 @@ LoadSurveyById {
         date: 1
       }
     })
-    return MongoHelper.map<SurveyModel>(survey)
+    return survey && MongoHelper.map<SurveyModel>(survey)
   }
 }
