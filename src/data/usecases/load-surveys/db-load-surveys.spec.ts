@@ -27,7 +27,7 @@ const makeFakeSurveys = (): SurveyModel[] => {
 const makeLoadSurveysRepository = (): LoadSurveysRepository => {
   class LoadSurveysRepositoryStub implements LoadSurveysRepository {
     async loadAll (): Promise<SurveyModel[]> {
-      return makeFakeSurveys()
+      return Promise.resolve(makeFakeSurveys())
     }
   }
   return new LoadSurveysRepositoryStub()
