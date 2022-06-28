@@ -82,6 +82,7 @@ describe('Survey Mongo Repository', () => {
       })
       const survey = await sut.loadById(result.insertedId.toHexString())
       expect(survey).toBeTruthy()
+      expect(survey.id).toBeTruthy()
     })
   })
 })
