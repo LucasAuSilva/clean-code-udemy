@@ -2,7 +2,7 @@ import {
   HttpRequest,
   Validation,
   AddSurvey,
-  AddSurveyModel,
+  AddSurveyDto,
   badRequest,
   noContent,
   serverError
@@ -32,7 +32,7 @@ const makeValidation = (): Validation => {
 
 const makeAddSurvey = (): AddSurvey => {
   class AddSurveyStub implements AddSurvey {
-    async add (_data: AddSurveyModel): Promise<void> {
+    async add (_data: AddSurveyDto): Promise<void> {
       return Promise.resolve()
     }
   }

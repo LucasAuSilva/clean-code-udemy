@@ -4,7 +4,7 @@ import {
   SaveSurveyResult,
   SurveyModel,
   SurveyResultModel,
-  SaveSurveyResultModel,
+  SaveSurveyResultDto,
   ok,
   forbidden,
   InvalidParamError,
@@ -53,7 +53,7 @@ const makeLoadSurveyById = (): LoadSurveyById => {
 
 const makeSaveSurveyResult = (): SaveSurveyResult => {
   class SaveSurveyResultStub implements SaveSurveyResult {
-    async save (_data: SaveSurveyResultModel): Promise<SurveyResultModel> {
+    async save (_data: SaveSurveyResultDto): Promise<SurveyResultModel> {
       return Promise.resolve(makeFakeSurveyResult())
     }
   }

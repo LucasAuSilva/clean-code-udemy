@@ -1,6 +1,6 @@
 import {
   Authentication,
-  AuthenticationModel,
+  AuthenticationDto,
   AccountModel,
   LoadAccountByEmailRepository,
   UpdateAccessTokenRepository,
@@ -16,7 +16,7 @@ const makeFakeAccount = (): AccountModel => ({
   password: 'hashed_password'
 })
 
-const makeFakeAuthentication = (): AuthenticationModel => ({
+const makeFakeAuthentication = (): AuthenticationDto => ({
   email: 'any_email@email.com',
   password: 'any_password'
 })
