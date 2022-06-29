@@ -8,7 +8,7 @@ import {
   forbidden,
   serverError,
   InvalidParamError
-} from './save-survey-result-protocols'
+} from './save-survey-result-controller-protocols'
 
 export class SaveSurveyResultController implements Controller {
   constructor (
