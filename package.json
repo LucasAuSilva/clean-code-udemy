@@ -6,8 +6,9 @@
   "scripts": {
     "start": "node dist/main/server.js",
     "build": "tsc --project tsconfig.production.json",
+    "build:watch": "npm run build -- --watch",
     "dev": "sucrase-node src/main/server.ts",
-    "debug": "node --inspect=9222 --nolazy dist/main/server.js",
+    "debug": "nodemon -L --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/main/server.js",
     "test": "jest --passWithNoTests --silent --runInBand --no-cache",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
@@ -40,6 +41,7 @@
     "jest": "^27.5.1",
     "lint-staged": "^12.3.4",
     "mockdate": "^3.0.5",
+    "nodemon": "^2.0.18",
     "rimraf": "^3.0.2",
     "sucrase": "^3.21.0",
     "supertest": "^6.2.3",
