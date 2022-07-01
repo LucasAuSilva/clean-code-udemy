@@ -5,6 +5,7 @@ export const surveysPath = {
     }],
     tags: ['Survey'],
     summary: 'API for get all surveys',
+    description: 'This route can only be access with **authenticated users**',
     responses: {
       200: {
         description: 'Success',
@@ -33,6 +34,7 @@ export const surveysPath = {
     }],
     tags: ['Survey'],
     summary: 'API for create a survey',
+    description: 'This route can only be access with **authenticated admin users**',
     requestBody: {
       content: {
         'application/json': {
