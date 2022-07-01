@@ -9,9 +9,9 @@ import { ObjectId } from 'mongodb'
 
 export class AccountMongoRepository implements AddAccountRepository,
 LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRepository {
-  async add (account: AddAccountDto): Promise<AccountModel> {
+  async add (data: AddAccountDto): Promise<AccountModel> {
     const accountCollection = await MongoHelper.getCollection('accounts')
-    const result = await accountCollection.insertOne(account)
+    const result = await accountCollection.insertOne(data)
     const newAccount = await accountCollection.findOne({
       _id: result.insertedId
     }, {

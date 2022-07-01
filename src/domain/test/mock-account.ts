@@ -1,18 +1,22 @@
 import { AccountModel } from '@/domain/models/account'
 import { AddAccountDto } from '@/domain/usecases/account/add-account'
 import { AuthenticationDto } from '@/domain/usecases/account/authentication'
+import { faker } from '@faker-js/faker'
 
-export const mockAccountModel = (): AccountModel => Object.assign({}, mockAddAccountDto(), {
-  id: 'any_id'
+export const mockAccountModel = (): AccountModel => ({
+  id: faker.datatype.uuid(),
+  name: faker.name.findName(),
+  email: faker.internet.email(),
+  password: faker.internet.password()
 })
 
 export const mockAddAccountDto = (): AddAccountDto => ({
-  name: 'any_name',
-  email: 'any_email@email.com',
-  password: 'any_password'
+  name: faker.name.findName(),
+  email: faker.internet.email(),
+  password: faker.internet.password()
 })
 
 export const mockAuthentication = (): AuthenticationDto => ({
-  email: 'any_email@email.com',
-  password: 'any_password'
+  email: faker.internet.email(),
+  password: faker.internet.password()
 })

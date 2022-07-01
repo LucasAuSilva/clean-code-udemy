@@ -22,10 +22,10 @@ export const MongoHelper = {
   },
 
   map<T> (data: any): T {
-    const { _id: id, ...collectionWithoutId } = data
+    const { _id: id, ...rest } = data
     return {
       id,
-      ...collectionWithoutId
+      ...rest
     }
   },
 
