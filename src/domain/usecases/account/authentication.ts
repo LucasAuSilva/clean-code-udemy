@@ -1,3 +1,4 @@
+import { AuthenticationModel } from '@/domain/models/authentication'
 
 export type AuthenticationDto = {
   email: string
@@ -5,5 +6,5 @@ export type AuthenticationDto = {
 }
 
 export interface Authentication {
-  auth: (authentication: AuthenticationDto) => Promise<string>
+  auth: (authentication: AuthenticationDto) => Promise<AuthenticationModel>
 }
