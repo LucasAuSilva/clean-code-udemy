@@ -5,7 +5,6 @@ EXPOSE 5050
 
 COPY ./package.json .
 COPY ./tsconfig.json .
-COPY ./tsconfig.production.json .
 COPY ./src ./src
 
 RUN npm install --only=prod \
