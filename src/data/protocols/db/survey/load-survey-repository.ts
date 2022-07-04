@@ -1,5 +1,5 @@
 import { SurveyModel } from '@/data/usecases/survey/load-surveys/db-load-surveys-protocols'
 
 export interface LoadSurveysRepository {
-  loadAll: () => Promise<SurveyModel[]>
+  loadAll: (accountId: string) => Promise<SurveyModel[]>
 }
