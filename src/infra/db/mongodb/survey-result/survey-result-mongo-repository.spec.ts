@@ -51,7 +51,7 @@ describe('SurveyResultMongoRepository', () => {
     surveyResultCollection = await MongoHelper.getCollection('surveyResults')
     await surveyResultCollection.deleteMany({})
     surveyCollection = await MongoHelper.getCollection('surveys')
-    await surveyResultCollection.deleteMany({})
+    await surveyCollection.deleteMany({})
     accountCollection = await MongoHelper.getCollection('accounts')
     await accountCollection.deleteMany({})
   })
