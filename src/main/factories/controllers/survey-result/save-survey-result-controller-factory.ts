@@ -1,12 +1,12 @@
 import { Controller } from '@/presentation/protocols'
 import { SaveSurveyResultController } from '@/presentation/controllers/survey-result'
-import { makeDbLoadSurveyById } from '@/main/factories/usecases/survey'
+import { makeDbLoadAnswersBySurveyId } from '@/main/factories/usecases/survey'
 import { makeDbSaveSurveyResult } from '@/main/factories/usecases/survey-result'
 import { makeLogControllerDecorator } from '@/main/factories/decorators/log-controller-decorator-factory'
 
 export const makeSaveSurveyResultController = (): Controller => {
   const controller = new SaveSurveyResultController(
-    makeDbLoadSurveyById(),
+    makeDbLoadAnswersBySurveyId(),
     makeDbSaveSurveyResult()
   )
   return makeLogControllerDecorator(controller)
