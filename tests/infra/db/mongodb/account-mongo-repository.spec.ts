@@ -28,11 +28,8 @@ describe('AccountMongoRepository', () => {
     test('Should return an account on add success', async () => {
       const sut = makeSut()
       const addAccountDto = mockAddAccountDto()
-      const account = await sut.add(addAccountDto)
-      expect(account).toBeTruthy()
-      expect(account.id).toBeTruthy()
-      expect(account.name).toBe(addAccountDto.name)
-      expect(account.email).toBe(addAccountDto.email)
+      const isValid = await sut.add(addAccountDto)
+      expect(isValid).toBe(true)
     })
   })
 

@@ -7,12 +7,12 @@ import { UpdateAccessTokenRepository } from '@/data/protocols/db/account/update-
 import { mockAccountModel } from '@/tests/domain/mocks'
 
 export class AddAccountRepositorySpy implements AddAccountRepository {
-  accountModel = mockAccountModel()
+  isValid = true
   addAccountDto: AddAccountDto
 
-  async add (data: AddAccountDto): Promise<AccountModel> {
+  async add (data: AddAccountDto): Promise<boolean> {
     this.addAccountDto = data
-    return this.accountModel
+    return this.isValid
   }
 }
 

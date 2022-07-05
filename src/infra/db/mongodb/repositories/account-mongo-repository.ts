@@ -9,10 +9,10 @@ import { ObjectId } from 'mongodb'
 
 export class AccountMongoRepository implements AddAccountRepository,
 LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRepository {
-  async add (data: AddAccountDto): Promise<AccountModel> {
+  async add (data: AddAccountDto): Promise<boolean> {
     const accountCollection = await MongoHelper.getCollection('accounts')
     const result = await accountCollection.insertOne(data)
-    const newAccount = await accountCollection.findOne({
+    return await accountCollection.findOne({
       _id: result.insertedId
     }, {
       projection: {
@@ -20,8 +20,7 @@ LoadAccountByEmailRepository, UpdateAccessTokenRepository, LoadAccountByTokenRep
         name: 1,
         email: 1
       }
-    })
-    return MongoHelper.map<AccountModel>(newAccount)
+    }) != null
   }
 
   async loadByEmail (email: string): Promise<AccountModel> {
