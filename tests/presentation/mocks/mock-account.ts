@@ -7,12 +7,12 @@ import { mockAccountModel } from '@/tests/domain/mocks'
 import { faker } from '@faker-js/faker'
 
 export class AddAccountSpy implements AddAccount {
-  accountModel = mockAccountModel()
+  isValid = true
   addAccountDto: AddAccountDto
 
-  async add (account: AddAccountDto): Promise<AccountModel> {
+  async add (account: AddAccountDto): Promise<boolean> {
     this.addAccountDto = account
-    return Promise.resolve(this.accountModel)
+    return this.isValid
   }
 }
 
@@ -25,7 +25,7 @@ export class AuthenticationSpy implements Authentication {
 
   async auth (authentication: AuthenticationDto): Promise<AuthenticationModel> {
     this.authenticationDto = authentication
-    return Promise.resolve(this.authenticationModel)
+    return this.authenticationModel
   }
 }
 
@@ -37,6 +37,6 @@ export class LoadAccountByTokenSpy implements LoadAccountByToken {
   async load (accessToken: string, role?: string): Promise<AccountModel> {
     this.accessToken = accessToken
     this.role = role
-    return Promise.resolve(this.accountModel)
+    return this.accountModel
   }
 }

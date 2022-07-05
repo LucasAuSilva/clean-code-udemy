@@ -12,7 +12,7 @@ export class AddAccountRepositorySpy implements AddAccountRepository {
 
   async add (data: AddAccountDto): Promise<AccountModel> {
     this.addAccountDto = data
-    return Promise.resolve(this.accountModel)
+    return this.accountModel
   }
 }
 
