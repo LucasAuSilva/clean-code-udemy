@@ -3,7 +3,7 @@ import {
   LoadAccountByTokenRepository, CheckAccountByEmailRepository
 } from '@/data/protocols/db/account'
 import { AccountModel } from '@/domain/models/account'
-import { AddAccountDto } from '@/domain/usecases/account/add-account'
+import { AddAccountDto } from '@/domain/usecases/account'
 import { MongoHelper } from '../helpers/mongo-helper'
 import { ObjectId } from 'mongodb'
 

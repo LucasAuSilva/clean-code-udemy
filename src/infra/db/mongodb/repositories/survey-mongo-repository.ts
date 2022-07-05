@@ -1,7 +1,7 @@
 import { AddSurveyRepository, LoadSurveysRepository, LoadSurveyByIdRepository, CheckSurveyByIdRepository } from '@/data/protocols/db/survey'
 import { MongoHelper, QueryBuilder } from '../helpers'
 import { SurveyModel } from '@/domain/models/survey'
-import { AddSurveyDto } from '@/domain/usecases/survey/add-survey'
+import { AddSurveyDto } from '@/domain/usecases/survey'
 import { ObjectId } from 'mongodb'
 
 export class SurveyMongoRepository implements AddSurveyRepository,
