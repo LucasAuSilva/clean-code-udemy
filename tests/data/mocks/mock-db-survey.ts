@@ -1,8 +1,6 @@
 import { SurveyModel } from '@/domain/models/survey'
-import { AddSurveyDto } from '@/domain/usecases/survey/add-survey'
-import { AddSurveyRepository } from '@/data/protocols/db/survey/add-survey-repository'
-import { LoadSurveysRepository } from '@/data/protocols/db/survey/load-survey-repository'
-import { LoadSurveyByIdRepository } from '@/data/protocols/db/survey/load-survey-by-id-repository'
+import { AddSurveyDto } from '@/domain/usecases/survey'
+import { AddSurveyRepository, LoadSurveyByIdRepository, LoadSurveysRepository, CheckSurveyByIdRepository } from '@/data/protocols/db/survey'
 import { mockSurveyModel, mockSurveyModels } from '@/tests/domain/mocks'
 
 export class AddSurveyRepositorySpy implements AddSurveyRepository {
@@ -21,6 +19,16 @@ export class LoadSurveyByIdRepositorySpy implements LoadSurveyByIdRepository {
   async loadById (id: string): Promise<SurveyModel> {
     this.id = id
     return Promise.resolve(this.surveyModel)
+  }
+}
+
+export class CheckSurveyByIdRepositorySpy implements CheckSurveyByIdRepository {
+  result = true
+  id: string
+
+  async checkById (id: string): Promise<boolean> {
+    this.id = id
+    return this.result
   }
 }
 

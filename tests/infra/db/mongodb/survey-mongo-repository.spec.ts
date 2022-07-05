@@ -3,6 +3,7 @@ import { mockAddAccountDto, mockAddSurveyDto } from '@/tests/domain/mocks'
 import { Collection, ObjectId } from 'mongodb'
 import { MongoHelper } from '@/infra/db/mongodb/helpers'
 import { SurveyMongoRepository } from '@/infra/db/mongodb/repositories'
+import { faker } from '@faker-js/faker'
 
 let surveyResultCollection: Collection
 let surveyCollection: Collection
@@ -91,6 +92,21 @@ describe('SurveyResultMongoRepository', () => {
       const survey = await sut.loadById(result.insertedId.toHexString())
       expect(survey).toBeTruthy()
       expect(survey.id).toBeTruthy()
+    })
+  })
+
+  describe('checkById()', () => {
+    test('Should return true if survey id exists', async () => {
+      const sut = makeSut()
+      const result = await surveyCollection.insertOne(mockAddSurveyDto())
+      const exists = await sut.checkById(result.insertedId.toHexString())
+      expect(exists).toBe(true)
+    })
+
+    test('Should return false if survey id not exists', async () => {
+      const sut = makeSut()
+      const exists = await sut.checkById(faker.database.mongodbObjectId())
+      expect(exists).toBe(false)
     })
   })
 })
