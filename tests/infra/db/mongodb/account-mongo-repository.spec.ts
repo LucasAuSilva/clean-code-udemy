@@ -53,6 +53,22 @@ describe('AccountMongoRepository', () => {
     })
   })
 
+  describe('checkByEmail()', () => {
+    test('Should return true if email is used', async () => {
+      const sut = makeSut()
+      const addAccountDto = mockAddAccountDto()
+      await accountCollection.insertOne(addAccountDto)
+      const isUsed = await sut.checkByEmail(addAccountDto.email)
+      expect(isUsed).toBe(true)
+    })
+
+    test('Should return false if email is not used', async () => {
+      const sut = makeSut()
+      const isUsed = await sut.checkByEmail(faker.internet.email())
+      expect(isUsed).toBe(false)
+    })
+  })
+
   describe('updateAccessToken()', () => {
     test('Should update the account accessToken on updateAccessToken success', async () => {
       const sut = makeSut()
