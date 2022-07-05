@@ -1,12 +1,11 @@
-import { LoadSurveysController } from '@/presentation/controllers/survey'
-import { HttpRequest } from '@/presentation/protocols'
+import { LoadSurveysController, LoadSurveysControllerDto } from '@/presentation/controllers/survey'
 import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helper'
 import { LoadSurveysSpy } from '@/tests/presentation/mocks'
 import { throwError } from '@/tests/domain/mocks'
 import { faker } from '@faker-js/faker'
 import MockDate from 'mockdate'
 
-const mockRequest = (): HttpRequest => ({
+const mockRequest = (): LoadSurveysControllerDto => ({
   accountId: faker.datatype.uuid()
 })
 
