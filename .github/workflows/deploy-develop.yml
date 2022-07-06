@@ -1,5 +1,5 @@
 
-name: Deploy CD
+name: Deploy Develop
 
 on:
   workflow_run:
@@ -7,11 +7,17 @@ on:
     types: [completed]
     branches:
       - 'develop'
-      - 'master'
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: develop
 
     steps:
       - name: Checkout
