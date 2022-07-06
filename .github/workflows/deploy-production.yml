@@ -1,0 +1,31 @@
+
+name: Deploy Production
+
+on:
+  workflow_run:
+    workflows: ["Build CI", "Deploy Develop"]
+    types: [completed]
+    branches:
+      - 'master'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node 16
+        uses: actions/setup-node@v3.3.0
+        with:
+          node-version: 16.x
+
+      - name: Install Railway
+        run: npm i -g @railway/cli
+
+      - name: Deploy
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
