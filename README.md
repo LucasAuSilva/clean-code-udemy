@@ -43,8 +43,6 @@ Contents
 
 ## Features
 
------------------
-
 * Signup
 * Login
 * Create survey
