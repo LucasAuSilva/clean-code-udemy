@@ -10,7 +10,7 @@ import { ObjectId } from 'mongodb'
 export class AccountMongoRepository implements AddAccountRepository, LoadAccountByEmailRepository,
 UpdateAccessTokenRepository, LoadAccountByTokenRepository, CheckAccountByEmailRepository {
   async add (data: AddAccountDto): Promise<boolean> {
-    const accountCollection = await MongoHelper.getCollection('accounts')
+    const accountCollection = MongoHelper.getCollection('accounts')
     const result = await accountCollection.insertOne(data)
     return await accountCollection.findOne({
       _id: result.insertedId
@@ -24,7 +24,7 @@ UpdateAccessTokenRepository, LoadAccountByTokenRepository, CheckAccountByEmailRe
   }
 
   async loadByEmail (email: string): Promise<AccountModel> {
-    const accountCollection = await MongoHelper.getCollection('accounts')
+    const accountCollection = MongoHelper.getCollection('accounts')
     const account = await accountCollection.findOne({
       email
     }, {
@@ -39,7 +39,7 @@ UpdateAccessTokenRepository, LoadAccountByTokenRepository, CheckAccountByEmailRe
   }
 
   async checkByEmail (email: string): Promise<boolean> {
-    const accountCollection = await MongoHelper.getCollection('accounts')
+    const accountCollection = MongoHelper.getCollection('accounts')
     const account = await accountCollection.findOne({
       email
     }, {
@@ -51,7 +51,7 @@ UpdateAccessTokenRepository, LoadAccountByTokenRepository, CheckAccountByEmailRe
   }
 
   async loadByToken (accessToken: string, role?: string): Promise<AccountModel> {
-    const accountCollection = await MongoHelper.getCollection('accounts')
+    const accountCollection = MongoHelper.getCollection('accounts')
     const account = await accountCollection.findOne({
       accessToken,
       $or: [{
@@ -70,7 +70,7 @@ UpdateAccessTokenRepository, LoadAccountByTokenRepository, CheckAccountByEmailRe
   }
 
   async updateAccessToken (id: string, token: string): Promise<void> {
-    const accountCollection = await MongoHelper.getCollection('accounts')
+    const accountCollection = MongoHelper.getCollection('accounts')
     await accountCollection.updateOne({
       _id: new ObjectId(id)
     }, {

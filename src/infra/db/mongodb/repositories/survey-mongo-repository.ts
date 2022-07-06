@@ -7,12 +7,12 @@ import { ObjectId } from 'mongodb'
 export class SurveyMongoRepository implements AddSurveyRepository,
   LoadSurveysRepository, LoadSurveyByIdRepository, CheckSurveyByIdRepository {
   async add (data: AddSurveyDto): Promise<void> {
-    const surveyCollection = await MongoHelper.getCollection('surveys')
+    const surveyCollection = MongoHelper.getCollection('surveys')
     await surveyCollection.insertOne(data)
   }
 
   async loadAll (accountId: string): Promise<SurveyModel[]> {
-    const surveyCollection = await MongoHelper.getCollection('surveys')
+    const surveyCollection = MongoHelper.getCollection('surveys')
     const query = new QueryBuilder()
       .lookup({
         from: 'surveyResults',
@@ -45,7 +45,7 @@ export class SurveyMongoRepository implements AddSurveyRepository,
   }
 
   async loadById (id: string): Promise<SurveyModel> {
-    const surveyCollection = await MongoHelper.getCollection('surveys')
+    const surveyCollection = MongoHelper.getCollection('surveys')
     const survey = await surveyCollection.findOne({
       _id: new ObjectId(id)
     }, {
@@ -60,7 +60,7 @@ export class SurveyMongoRepository implements AddSurveyRepository,
   }
 
   async checkById (id: string): Promise<boolean> {
-    const surveyCollection = await MongoHelper.getCollection('surveys')
+    const surveyCollection = MongoHelper.getCollection('surveys')
     const survey = await surveyCollection.findOne({
       _id: new ObjectId(id)
     }, {
