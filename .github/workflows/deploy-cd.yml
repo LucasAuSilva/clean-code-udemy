@@ -11,6 +11,7 @@ on:
 
 jobs:
   deploy:
+    steps:
     - name: Deploy to Railway
       uses: devtomio/action-railway@v1.1.4
       with:
