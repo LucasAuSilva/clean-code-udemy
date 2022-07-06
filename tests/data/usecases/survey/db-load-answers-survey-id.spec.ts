@@ -48,6 +48,13 @@ describe('DbLoadAnswersBySurveyId', () => {
     ])
   })
 
+  test('Should return an empty list of answers if loadSurveyByIdRepository returns null', async () => {
+    const { sut, loadSurveyByIdRepositorySpy } = makeSut()
+    loadSurveyByIdRepositorySpy.surveyModel = null
+    const answers = await sut.loadAnswers(surveyId)
+    expect(answers).toEqual([])
+  })
+
   test('Should throw if LoadSurveyByIdRepository throws', async () => {
     const { sut, loadSurveyByIdRepositorySpy } = makeSut()
     jest.spyOn(loadSurveyByIdRepositorySpy, 'loadById').mockImplementationOnce(throwError)
