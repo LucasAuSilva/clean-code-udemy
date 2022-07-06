@@ -36,7 +36,7 @@ jobs:
       run: npm install
       
     - name: Jest Tests
-      run: npm test:ci
+      run: npm run test:ci
       
     - name: Coveralls
       # You may pin to the exact commit or the version.
