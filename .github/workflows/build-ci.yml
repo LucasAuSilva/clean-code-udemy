@@ -10,10 +10,6 @@ on:
       - develop
       - feature/*
       - hotfix/*
-  pull_request:
-    branches:
-      - master
-      - develop
 
 jobs:
   build:
