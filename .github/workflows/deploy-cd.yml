@@ -10,9 +10,11 @@ on:
       - 'master'
 
 jobs:
-  deploy:
-    steps:
-    - name: Deploy to Railway
-      uses: devtomio/action-railway@v1.1.4
-      with:
-        railway_token: {{ secrets.RAILWAY_TOKEN }}
+    deploy:
+      runs-on: ubuntu-latest
+      
+      steps:
+      - uses: devtomio/action-railway@v1.1.4
+      - name: Deploy to Railway
+        with:
+          railway_token: ${{ secrets.RAILWAY_TOKEN }}
