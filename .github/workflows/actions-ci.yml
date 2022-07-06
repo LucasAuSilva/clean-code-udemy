@@ -48,5 +48,5 @@ jobs:
         # Path to lcov file
         path-to-lcov: ./coverage/lcov.info
         # The root folder of the project that originally ran the tests
-        base-path: ./tests
+        base-path: ./src
         
