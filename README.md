@@ -54,12 +54,9 @@ Contents
 
 ## Link to api docs
 
------------------
 > [**Documentations**](https://clean-code-udemy-develop.up.railway.app/api-docs)
 
 ## Programming concepts used
-
------------------
 
 ### Principles
 
@@ -104,7 +101,6 @@ Contents
 
 ## How to run it
 
------------------
 > Before run the project you need to confirm that you have this tools installed:
 > [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/)
 
@@ -130,8 +126,6 @@ $ npm run dev
 
 ## Technologies-in-the-project
 
------------------
-
 * [Node.js](https://nodejs.org/en/)
 * [Typescript](https://www.typescriptlang.org/)
 * [Jest](https://reactnative.dev/)
@@ -145,17 +139,13 @@ $ npm run dev
 
 ## Versioning
 
------------------
 To keep better organization of releases we follow the [Semantic Versioning 2.0.0](http://semver.org/) guidelines.
 
 ## History
 
------------------
 See [Releases](https://github.com/LucasAuSilva/clean-code-udemy/releases) for detailed changelog.
 
 ## Author
-
------------------
 
 <a href="https://github.com/LucasAuSilva">
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/69608721?v=4" width="100px;" alt="My picture"/>
