@@ -1,3 +1,5 @@
+import base from './base'
 import account from './account'
+import survey from './survey'
 
-export default [account]
+export default [base, account, survey]
